@@ -43,7 +43,11 @@ Nov 30 17:15:24 ubuntu-xenial systemd[1]: Started MongoDB Database Server.
 - Created the env var DB_HOME=192.168.10.150:27017
 - Saved changes 
 - `source ~/.bash_profile`
-- `printenv DB_HOME` returned 192.168.10.150:27017
+- `printenv DB_HOST` returned 192.168.10.150:27017
+
+**Automation**
+- Automate provisioning of MultiVM env with app, db and Reverse Proxy.
+
 
 
 
