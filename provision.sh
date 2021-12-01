@@ -16,6 +16,8 @@ sudo apt-get install nodejs -y
 #install npm
 sudo npm install pm2 -g
 
+#Create env var DB_HOST
+
 #replace default file in nginx 
-#sudo rm -rf /etc/nginx/sites-available/default
-#sudo cp default /etc/nginx/sites-available/
+# sudo rm -rf /etc/nginx/sites-available/default
+# sudo ln -s /home/vagrant/app/default /etc/nginx/sites-available

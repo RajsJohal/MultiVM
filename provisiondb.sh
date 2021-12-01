@@ -21,7 +21,7 @@ sudo systemctl start mongod
 sudo systemctl enable mongod
 
 #change bindIP inside mongod.conf
-sudo rm -rf /etc/mongod.conf 
-sudo cp ./mongod.conf /etc/mongod.conf
+# sudo rm -rf /etc/mongod.conf
+# sudo ln -s /home/vagrant/app/mongod.conf /etc/
 
 
