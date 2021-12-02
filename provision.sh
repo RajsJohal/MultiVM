@@ -19,5 +19,21 @@ sudo npm install pm2 -g
 #Create env var DB_HOST
 
 #replace default file in nginx 
-# sudo rm -rf /etc/nginx/sites-available/default
-# sudo ln -s /home/vagrant/app/default /etc/nginx/sites-available
+sudo rm -rf /etc/nginx/sites-available/default
+sudo cp /home/vagrant/app/default /etc/nginx/sites-available/default
+
+#update bashrc with env var DB_HOST
+sudo rm -rf .bashrc
+sudo cp /home/vagrant/app/.bashrc ./.bashrc
+sudo nginx -t
+sudo systemctl restart nginx
+
+#SEED
+cd app
+cd app
+cd seeds
+node seed.js
+
+# npm install
+
+# npm start
