@@ -49,13 +49,13 @@ Nov 30 17:15:24 ubuntu-xenial systemd[1]: Started MongoDB Database Server.
 - Automate provisioning of MultiVM env with app, db and Reverse Proxy.
 - To automate the reverse proxy, replace the current default folder with a new defined default file with the correct local host port number. 
 
-- `rm -rf /etc/nginx/sites-available/default`
+- `sudo rm -rf /etc/nginx/sites-available/default`
 - `sudo cp default /etc/nginx/sites-available/default`
 
 - Same principle with mongod.conf, replace curret file with a new mongod.conf file with the correct bindIP.
 
-- ` rm -rf /etc/mongod.conf`
-- `cp mongod.conf /etc/mongod.conf`
+- `sudo rm -rf /etc/mongod.conf`
+- `sudo cp mongod.conf /etc/mongod.conf`
 
 
 
