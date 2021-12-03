@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
         db.vm.network "private_network", ip: "192.168.10.150"
 
         #Sync folder from OS to VM
-        db.vm.synced_folder "./environment/db", "/home/vagrant/db"
+        db.vm.synced_folder "./db", "/home/vagrant/db"
 
         # Provisioning
         db.vm.provision "shell", path: "./provisiondb.sh"
