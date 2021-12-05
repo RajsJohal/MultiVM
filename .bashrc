@@ -115,4 +115,4 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export DB_HOST="mongodb://192.168.56.4:27017/posts"
+export DB_HOST="mongodb://192.168.10.150:27017/posts"

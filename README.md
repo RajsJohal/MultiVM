@@ -6,15 +6,28 @@ Vagrant can define and control multiple guest machines per Vagrantfile, this is 
 ```
 Vagrant.configure("2") do |config|
     config.vm.box = "ubuntu/xenial64"
-
+    
     config.vm.define "app" do |app|
         app.vm.box = "ubuntu/xenial64"
         app.vm.network "private_network", ip: "192.168.10.100"
+        #Sync folder from OS to VM
+        app.vm.synced_folder ".", "/home/vagrant/app"
+
+        # Provisioning
+        app.vm.provision "shell", path: "./provision.sh"
     end
     config.vm.define "db" do |db|
         db.vm.box = "ubuntu/xenial64"
         db.vm.network "private_network", ip: "192.168.10.150"
+
+        #Sync folder from OS to VM
+        db.vm.synced_folder "./db", "/home/vagrant/db"
+
+        # Provisioning
+        db.vm.provision "shell", path: "./provisiondb.sh"
     end
+    
+
 end
 ```
 - Defined 2 VM's one called app and the other called db
@@ -48,14 +61,13 @@ Nov 30 17:15:24 ubuntu-xenial systemd[1]: Started MongoDB Database Server.
 **Automation**
 - Automate provisioning of MultiVM env with app, db and Reverse Proxy.
 - To automate the reverse proxy, replace the current default folder with a new defined default file with the correct local host port number. 
-
-- `sudo rm -rf /etc/nginx/sites-available/default`
-- `sudo cp default /etc/nginx/sites-available/default`
+- `sudo cp /home/vagrant/app/default /etc/nginx/sites-available/default`
 
 - Same principle with mongod.conf, replace curret file with a new mongod.conf file with the correct bindIP.
+- `sudo cp /home/vagrant/db/mongod.conf /etc/mongod.conf`
 
-- `sudo rm -rf /etc/mongod.conf`
-- `sudo cp mongod.conf /etc/mongod.conf`
+- Create a new bashrc file with the comand to export the env var DB_HOST=mongodb://192.168.10.150:27017/posts
+
 
 
 
